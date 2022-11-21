@@ -1,3 +1,4 @@
+
 resource "aws_iam_user" "user" {
   name          = "${local.resource_prefix.value}-user"
   force_destroy = true
@@ -33,9 +34,7 @@ resource "aws_iam_user_policy" "userpolicy" {
     {
       "Action": [
         "ec2:*",
-        "s3:*",
-        "lambda:*",
-        "cloudwatch:*"
+        "s3:*"
       ],
       "Effect": "Allow",
       "Resource": "*"
@@ -53,3 +52,4 @@ output "secret" {
   value = aws_iam_access_key.user.encrypted_secret
 }
 
+          
